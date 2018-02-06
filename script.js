@@ -14,14 +14,16 @@ function findMyText(search, replace) {
 	}
 	let match = new RegExp(search, "ig");
 	let replaced = "";
-	if(empty(replace === true)) {
-		let boldText = "<span class=\"highlight"> + search + "</span>";
+	if(search.length == 0) {
+		alert("I ain't got time to search for nothing...");
+		return;
+	}
+	else if (replace.length == 0) {
+		let boldText = "" + "<span class=\"highlight\">" + search + "</span>";
 		replaced = toReplaceText.replace(match, boldText);
-	}else if(replace.length > 0) {
-		replaced = toReplaceText.replace(match, replace);
 	} else {
-		let boldText = "<span class=\"highlight"> + replaced + "</span>";
-		replaced = toReplaceText.replace(match, boldText);
+		replaced = toReplaceText.replace(match, replace);
+
 	}
 	document.getElementById("toReplace").innerHTML = replaced;
 
